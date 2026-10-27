@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
 
-            $table->string("name");
-            $table->string("job");
-            $table->text("photo_url");
+            $table->string('name');
+            $table->string('job');
+            $table->text('photo_url');
 
             $table->timestamps();
         });

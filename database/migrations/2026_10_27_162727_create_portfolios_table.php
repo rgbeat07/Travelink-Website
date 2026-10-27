@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId("category_id")->constrained('categories')->cascadeOnDelete();
-            $table->string("title");
-            $table->string("yt_vid_id");
-            $table->text("thumbnail_url");
-            $table->string("location");
-            $table->integer("pax");
-            $table->string("duration");
-            $table->text("summary");
-            $table->boolean("is_featured")->default(false);
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->string('title');
+            $table->string('yt_vid_id');
+            $table->text('thumbnail_url');
+            $table->string('location');
+            $table->integer('pax');
+            $table->string('duration');
+            $table->text('summary');
+            $table->boolean('is_featured')->default(false);
 
             $table->timestamps();
         });

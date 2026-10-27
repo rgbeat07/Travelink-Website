@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class souvenirCatalog extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        "category_id",
-        "title",
-        "main_photo_url",
-        "moq",
-        "description",
-        "specification",
-        "is_featured",
+        'category_id',
+        'title',
+        'main_photo_url',
+        'moq',
+        'description',
+        'specification',
+        'is_featured',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

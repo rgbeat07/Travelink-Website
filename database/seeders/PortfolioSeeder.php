@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\portfolio;
 use Illuminate\Database\Seeder;
 

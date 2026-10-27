@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('souvenir_catalogs', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId("category_id")->constrained("categories")->cascadeOnDelete();
-            $table->string("title");
-            $table->text("main_photo_url");
-            $table->integer("moq")->default(1);
-            $table->text("description");
-            $table->text("specification");
-            $table->string("is_featured")->default(false);
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->string('title');
+            $table->text('main_photo_url');
+            $table->integer('moq')->default(1);
+            $table->text('description');
+            $table->text('specification');
+            $table->string('is_featured')->default(false);
 
             $table->timestamps();
         });

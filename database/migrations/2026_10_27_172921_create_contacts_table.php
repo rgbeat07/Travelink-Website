@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
 
-            $table->string("phone_num");
-            $table->string("email");
-            $table->text("address");
-            $table->string("ig_url")->nullable();
-            $table->text("about_us_text")->nullable();
-            
+            $table->string('phone_num');
+            $table->string('email');
+            $table->text('address');
+            $table->string('ig_url')->nullable();
+            $table->text('about_us_text')->nullable();
+
             $table->timestamps();
         });
     }

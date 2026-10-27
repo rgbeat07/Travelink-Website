@@ -13,23 +13,23 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            "category_name" => "Domestik",
-            "type" => "portfolio"
+            'category_name' => 'Domestik',
+            'type' => 'portfolio',
         ]);
 
         Category::create([
-            "category_name" => "Internasional",
-            "type" => "portfolio"
+            'category_name' => 'Internasional',
+            'type' => 'portfolio',
         ]);
 
         Category::create([
-            "category_name" => "Tumbler",
-            "type" => "souvenir"
+            'category_name' => 'Tumbler',
+            'type' => 'souvenir',
         ]);
 
         Category::create([
-            "category_name" => "Plakat",
-            "type" => "souvenir"
+            'category_name' => 'Plakat',
+            'type' => 'souvenir',
         ]);
     }
 }
