@@ -5,8 +5,7 @@
 
 @section('content')
     <div class="home-app">
-        <x-header :isCatalog="false" />
-
+        
         <section id="home" class="hero" @if(!empty($hero->photo_url)) style="background-image: url('{{ $hero->photo_url }}');" @endif>
             <div class="hero-shade"></div>
             <div class="hero-copy">

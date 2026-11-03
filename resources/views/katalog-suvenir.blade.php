@@ -5,7 +5,6 @@
 
 @section('content')
     <div class="catalog-app">
-        <x-header :isCatalog="true" current="gifting" />
 
         <main class="catalog-main">
             <div class="catalog-intro">

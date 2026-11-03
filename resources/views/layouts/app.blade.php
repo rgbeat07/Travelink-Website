@@ -10,8 +10,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="@yield('body-class')">
+    
+    <x-header/>
     @yield('content')
-    @include('partials.footer')
+    <x-footer :contact="$contact" />
+
     @yield('modals')
     @stack('scripts')
 </body>

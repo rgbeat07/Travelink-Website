@@ -5,7 +5,6 @@
 
 @section('content')
     <div class="catalog-app">
-        <x-header :isCatalog="true" current="portfolio" />
 
         <main class="catalog-main">
             <div class="catalog-intro">

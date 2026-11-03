@@ -1090,10 +1090,6 @@ a {
     font-family: Inter, sans-serif
 }
 
-.catalog-home-nav .home-links .current {
-    color: var(--gold)
-}
-
 .catalog-main {
     padding-top: 128px
 }
