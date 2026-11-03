@@ -15,10 +15,6 @@ class Portfolio extends Model
         'video_url',
         'thumbnail_url',
         'location',
-        'pax',
-        'duration',
-        'hotel',
-        'summary',
         'is_featured',
     ];
 }

@@ -25,7 +25,6 @@
                         $regionSlug = strtolower($item->category);
                         $filterTags = $regionSlug;
                         $label = $item->category;
-                        $paxText = is_numeric($item->pax) ? $item->pax . ' Pax' : $item->pax;
 
                         $videoUrl = $item->video_url;
                         $videoPath = rtrim(Str::before($videoUrl, '?'), '/');
@@ -46,13 +45,9 @@
                             'title' => $item->title,
                             'label' => $label,
                             'location' => $item->location,
-                            'pax' => $paxText,
-                            'duration' => $item->duration,
-                            'description' => $item->summary,
                             'image' => $item->thumbnail_url,
                             'video_embed_url' => $videoEmbedUrl,
                             'is_reel' => $isReel,
-                            'hotel' => $item->hotel,
                         ]);
                     @endphp
                     <article class="catalog-card" data-filter-tags="{{ $filterTags }}">
@@ -64,10 +59,9 @@
                         <div class="card-copy">
                             <small>◆ {{ $item->location }}</small>
                             <h3>{{ $item->title }}</h3>
-                            <p class="meta">● {{ $paxText }} &nbsp;&nbsp; ◷ {{ $item->duration }}</p>
                         </div>
                         <button class="card-btn" onclick='openPortfolioModal({{ $itemJson }})'>
-                            Lihat Detail Video &nbsp;→
+                            Lihat Video &nbsp;→
                         </button>
                     </article>
                 @endforeach
@@ -94,11 +88,6 @@
                     <small id="modal-portfolio-label">Corporate Banking</small>
                     <h2 id="modal-portfolio-title">Judul Portofolio</h2>
                     <b class="location" id="modal-portfolio-location">◆ Nusa Dua, Bali</b>
-                    <p id="modal-portfolio-desc">Deskripsi perjalanan...</p>
-                    <div class="spec-grid">
-                        <span><small>Durasi Program</small><span id="modal-portfolio-duration">3 Hari 2 Malam</span></span>
-                        <span><small>Akomodasi</small><span id="modal-portfolio-hotel">The Mulia Resort (*****)</span></span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -144,9 +133,6 @@
         document.getElementById('modal-portfolio-label').innerText = item.label;
         document.getElementById('modal-portfolio-title').innerText = currentTitle;
         document.getElementById('modal-portfolio-location').innerText = '◆ ' + (item.location);
-        document.getElementById('modal-portfolio-desc').innerText = item.description || item.summary;
-        document.getElementById('modal-portfolio-duration').innerText = item.duration;
-        document.getElementById('modal-portfolio-hotel').innerText = item.hotel;
 
         const container = document.getElementById('modal-image-container');
         container.classList.remove('reel');

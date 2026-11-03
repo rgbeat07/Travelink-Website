@@ -19,10 +19,6 @@ return new class extends Migration
             $table->string('video_url');
             $table->text('thumbnail_url');
             $table->string('location');
-            $table->integer('pax');
-            $table->string('duration');
-            $table->string('hotel');
-            $table->text('summary');
             $table->boolean('is_featured')->default(false);
 
             $table->timestamps();
