@@ -22,9 +22,9 @@
             <div class="catalog-grid" id="portfolio-grid">
                 @foreach($portfolios as $index => $item)
                     @php
-                        $regionSlug = strtolower($item->category->category_name);
+                        $regionSlug = strtolower($item->category);
                         $filterTags = $regionSlug;
-                        $label = $item->category->category_name;
+                        $label = $item->category;
                         $paxText = is_numeric($item->pax) ? $item->pax . ' Pax' : $item->pax;
                         $itemJson = json_encode([
                             'id' => $item->id,
@@ -95,7 +95,6 @@
     let currentImgUrl = '';
     let currentTitle = '';
 
-    // Filter functionality
     document.querySelectorAll('.filters .filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.filters .filter-btn').forEach(b => b.classList.remove('active'));
@@ -119,7 +118,6 @@
         });
     });
 
-    // Modal functionality
     function openPortfolioModal(item) {
         currentYtId = item.yt_vid_id;
         currentImgUrl = item.image || item.thumbnail_url;
@@ -132,7 +130,6 @@
         document.getElementById('modal-portfolio-duration').innerText = item.duration;
         document.getElementById('modal-portfolio-hotel').innerText = item.hotel;
 
-        // Reset image and play button
         const container = document.getElementById('modal-image-container');
         container.innerHTML = `
             <img id="modal-portfolio-img" src="${currentImgUrl}" alt="${currentTitle}">
