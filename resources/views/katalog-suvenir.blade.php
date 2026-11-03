@@ -9,15 +9,14 @@
         <main class="catalog-main">
             <div class="catalog-intro">
                 <span class="eyebrow dark">E-Commerce Lite Catalog</span>
-                <h1>Katalog Suvenir &amp; Merchandise</h1>
-                <p>Lengkapi momen perjalanan &amp; acara kantor dengan suvenir eksklusif kustom logo. Tatanan elegan siap dikirim sesuai kuantitas pemesanan Anda.</p>
+                <h1>Katalog Suvenir & Merchandise</h1>
+                <p>Lengkapi momen perjalanan & acara kantor dengan suvenir eksklusif kustom logo. Tatanan elegan siap dikirim sesuai kuantitas pemesanan Anda.</p>
             </div>
 
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Semua Produk</button>
-                <button class="filter-btn" data-filter="executive">Executive Kit</button>
-                <button class="filter-btn" data-filter="apparel">Apparel &amp; Merch</button>
-                <button class="filter-btn" data-filter="travel">Travel Accessories</button>
+                <button class="filter-btn" data-filter="tumbler">Tumbler</button>
+                <button class="filter-btn" data-filter="plakat">Plakat</button>
                 @foreach($categories as $cat)
                     @php $catSlug = Str::slug($cat->category_name); @endphp
                     @if(!array($catSlug, ['executive', 'apparel', 'travel']))
@@ -29,15 +28,8 @@
             <div class="catalog-grid" id="souvenir-grid">
                 @foreach($souvenirs as $index => $item)
                     @php
-                        $catName = $item->category->category_name ?? 'Executive Kit';
-                        $catLower = strtolower($catName);
-                        $extraTag = '';
-                        if (str_contains($catLower, 'tumbler')) {
-                            $extraTag = 'travel';
-                        } elseif (str_contains($catLower, 'plakat')) {
-                            $extraTag = 'executive';
-                        }
-                        $filterTags = Str::slug($catName) . ' ' . $extraTag;
+                        $catName = $item->category->category_name;
+                        $filterTags = Str::slug($catName);
 
                         $specsList = [];
                         if (!empty($item->specification)) {
@@ -57,7 +49,7 @@
                             'id' => $item->id,
                             'title' => $item->title,
                             'label' => $catName,
-                            'moq' => (int) ($item->moq ?? 10),
+                            'moq' => (int) ($item->moq),
                             'description' => $item->description,
                             'image' => $item->main_photo_url,
                             'specs' => $specsList
@@ -66,7 +58,7 @@
                     <article class="catalog-card" data-filter-tags="{{ $filterTags }}">
                         <div class="card-image">
                             <img src="{{ $item->main_photo_url }}" alt="{{ $item->title }}">
-                            <span>MOQ: {{ $item->moq ?? 10 }} Pcs</span>
+                            <span>MOQ: {{ $item->moq}} Pcs</span>
                         </div>
                         <div class="card-copy">
                             <small class="muted">{{ $catName }}</small>
@@ -74,7 +66,7 @@
                             <p>{{ $item->description }}</p>
                         </div>
                         <button class="card-btn solid" onclick='openSouvenirModal({{ $itemJson }})'>
-                            ▣ &nbsp; Lihat Detail &amp; Pesan
+                            Lihat Detail
                         </button>
                     </article>
                 @endforeach
@@ -97,23 +89,20 @@
                     <img id="modal-souvenir-img" src="" alt="">
                 </div>
                 <div class="modal-content">
-                    <small id="modal-souvenir-label">Executive Kit</small>
+                    <small id="modal-souvenir-label">Kategori produk</small>
                     <h2 id="modal-souvenir-title">Judul Produk</h2>
                     <p id="modal-souvenir-desc">Deskripsi produk...</p>
                     <div class="spec-list">
                         <b>Spesifikasi Material:</b>
-                        <div id="modal-souvenir-specs"></div>
+                        <div id="modal-souvenir-specs">spesifikasi produk</div>
                     </div>
-                    <label class="qty">
-                        Estimasi Jumlah Pesanan (Pcs):
-                        <span>
-                            <button type="button" onclick="changeSouvenirQty(-1)">−</button>
-                            <b id="modal-souvenir-qty">10</b>
-                            <button type="button" onclick="changeSouvenirQty(1)">+</button>
-                        </span>
-                    </label>
+                    
+                    <div class="moq-info">
+                        Minimal Pemesanan (MOQ): <span id="modal-souvenir-moq" style="color: var(--catgold);">10 Pcs</span>
+                    </div>
+
                     <a class="order-btn" id="modal-souvenir-wa-btn" target="_blank" href="#">
-                        ◉ &nbsp; Pesan via WhatsApp
+                        Tanya Detail via WhatsApp
                     </a>
                 </div>
             </div>
@@ -123,9 +112,8 @@
 
 @push('scripts')
 <script>
-    const waPhone = '{{ ltrim($contact->phone_num ?? '6281234567890', '+') }}';
+    const waPhone = '{{ ltrim($contact->phone_num) }}';
     let currentSouvenirItem = null;
-    let currentQty = 1;
 
     // Filter functionality
     document.querySelectorAll('.filters .filter-btn').forEach(btn => {
@@ -154,13 +142,16 @@
     // Modal functionality
     function openSouvenirModal(item) {
         currentSouvenirItem = item;
-        currentQty = item.moq || 1;
 
-        document.getElementById('modal-souvenir-img').src = item.image || item.main_photo_url || '';
-        document.getElementById('modal-souvenir-img').alt = item.title || '';
-        document.getElementById('modal-souvenir-label').innerText = item.label || 'Executive Kit';
-        document.getElementById('modal-souvenir-title').innerText = item.title || '';
-        document.getElementById('modal-souvenir-desc').innerText = item.description || '';
+        document.getElementById('modal-souvenir-img').src = item.image || item.main_photo_url;
+        document.getElementById('modal-souvenir-img').alt = item.title;
+        document.getElementById('modal-souvenir-label').innerText = item.label;
+        document.getElementById('modal-souvenir-title').innerText = item.title;
+        document.getElementById('modal-souvenir-desc').innerText = item.description;
+        
+        // Render MOQ
+        const moqValue = item.moq || 10;
+        document.getElementById('modal-souvenir-moq').innerText = moqValue + ' Pcs';
 
         // Render specs
         const specsContainer = document.getElementById('modal-souvenir-specs');
@@ -168,31 +159,18 @@
         if (item.specs && Array.isArray(item.specs)) {
             item.specs.forEach(spec => {
                 const p = document.createElement('p');
-                p.innerText = '✓   ' + spec;
+                p.innerText = '✓ ' + spec;
                 specsContainer.appendChild(p);
             });
         }
 
-        updateSouvenirQtyDisplay();
+        // Set WhatsApp URL untuk menanyakan detail produk
+        const message = `Halo Travelink Wisata, saya ingin menanyakan detail lebih lanjut mengenai produk ${item.title}.`;
+        const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;
+        document.getElementById('modal-souvenir-wa-btn').href = waUrl;
 
         document.getElementById('souvenir-modal-backdrop').style.display = 'grid';
         document.body.style.overflow = 'hidden';
-    }
-
-    function changeSouvenirQty(delta) {
-        if (!currentSouvenirItem) return;
-        const moq = currentSouvenirItem.moq || 1;
-        currentQty = Math.max(moq, currentQty + delta);
-        updateSouvenirQtyDisplay();
-    }
-
-    function updateSouvenirQtyDisplay() {
-        document.getElementById('modal-souvenir-qty').innerText = currentQty;
-        if (currentSouvenirItem) {
-            const message = `Halo Travelink Wisata, saya ingin memesan ${currentSouvenirItem.title} sebanyak ${currentQty} pcs.`;
-            const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;
-            document.getElementById('modal-souvenir-wa-btn').href = waUrl;
-        }
     }
 
     function closeSouvenirModal(e) {
