@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('souvenir_catalogs', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->string('category');
             $table->string('title');
             $table->text('main_photo_url');
             $table->integer('moq')->default(1);

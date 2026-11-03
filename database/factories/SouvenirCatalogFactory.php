@@ -2,12 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
-use App\Models\souvenirCatalog;
+use App\Models\SouvenirCatalog;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<souvenirCatalog>
+ * @extends Factory<SouvenirCatalog>
  */
 class SouvenirCatalogFactory extends Factory
 {
@@ -19,7 +18,7 @@ class SouvenirCatalogFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => Category::where('type', 'souvenir')->inRandomOrder()->first()?->id,
+            'category' => fake()->randomElement(['Tumbler', 'Plakat']),
             'title' => 'Custom'.fake()->words(2, true),
             'main_photo_url' => 'https://picsum.photos/600/600?random='.rand(101, 200),
             'moq' => 10,
