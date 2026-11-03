@@ -15,8 +15,6 @@
 
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="corporate">Corporate &amp; Perbankan</button>
-                <button class="filter-btn" data-filter="private">Private &amp; Family</button>
                 <button class="filter-btn" data-filter="domestik">Domestik</button>
                 <button class="filter-btn" data-filter="internasional">Internasional</button>
             </div>
@@ -24,10 +22,8 @@
             <div class="catalog-grid" id="portfolio-grid">
                 @foreach($portfolios as $index => $item)
                     @php
-                        $regionSlug = strtolower($item->category->category_name ?? ($index % 2 === 0 ? 'domestik' : 'internasional'));
-                        $isPrivate = stripos($item->title, 'family') !== false || stripos($item->title, 'honeymoon') !== false || stripos($item->title, 'private') !== false;
-                        $catSlug = $isPrivate ? 'private' : 'corporate';
-                        $filterTags = $regionSlug . ' ' . $catSlug;
+                        $regionSlug = strtolower($item->category->category_name);
+                        $filterTags = $regionSlug;
                         $label = $item->category->category_name;
                         $paxText = is_numeric($item->pax) ? $item->pax . ' Pax' : $item->pax;
                         $itemJson = json_encode([

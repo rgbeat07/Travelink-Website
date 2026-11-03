@@ -31,7 +31,6 @@
                     @php
                         $catName = $item->category->category_name ?? 'Executive Kit';
                         $catLower = strtolower($catName);
-                        // Map database categories (e.g. Tumbler -> travel, Plakat -> executive) so both standard and custom filters work
                         $extraTag = '';
                         if (str_contains($catLower, 'tumbler')) {
                             $extraTag = 'travel';
@@ -40,7 +39,6 @@
                         }
                         $filterTags = Str::slug($catName) . ' ' . $extraTag;
 
-                        // Parse specifications (either bullet string or array)
                         $specsList = [];
                         if (!empty($item->specification)) {
                             $lines = explode("\n", str_replace(["\r", "•", "-"], "", $item->specification));
