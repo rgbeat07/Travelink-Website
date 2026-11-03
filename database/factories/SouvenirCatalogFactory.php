@@ -22,10 +22,9 @@ class SouvenirCatalogFactory extends Factory
             'category_id' => Category::where('type', 'souvenir')->inRandomOrder()->first()?->id,
             'title' => 'Custom'.fake()->words(2, true),
             'main_photo_url' => 'https://picsum.photos/600/600?random='.rand(101, 200),
-            'moq' => fake()->randomElement([12, 24, 50, 100]),
+            'moq' => 10,
             'description' => fake()->paragraph(2),
             'specification' => "• Bahan: Premium\n• Custom: Emboss Logo\n• Garansi: Kualitas Terjamin",
-            'is_featured' => fake()->boolean(30),
         ];
     }
 }

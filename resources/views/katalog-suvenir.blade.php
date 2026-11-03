@@ -17,12 +17,6 @@
                 <button class="filter-btn active" data-filter="all">Semua Produk</button>
                 <button class="filter-btn" data-filter="tumbler">Tumbler</button>
                 <button class="filter-btn" data-filter="plakat">Plakat</button>
-                @foreach($categories as $cat)
-                    @php $catSlug = Str::slug($cat->category_name); @endphp
-                    @if(!array($catSlug, ['executive', 'apparel', 'travel']))
-                        <button class="filter-btn" data-filter="{{ $catSlug }}">{{ $cat->category_name }}</button>
-                    @endif
-                @endforeach
             </div>
 
             <div class="catalog-grid" id="souvenir-grid">
@@ -33,7 +27,7 @@
 
                         $specsList = [];
                         if (!empty($item->specification)) {
-                            $lines = explode("\n", str_replace(["\r", "•", "-"], "", $item->specification));
+                            $lines = explode("\n", str_replace(["\r", "•", "-", ","], "", $item->specification));
                             foreach ($lines as $line) {
                                 $trimmed = trim($line);
                                 if ($trimmed !== '') {
@@ -93,7 +87,7 @@
                     <h2 id="modal-souvenir-title">Judul Produk</h2>
                     <p id="modal-souvenir-desc">Deskripsi produk...</p>
                     <div class="spec-list">
-                        <b>Spesifikasi Material:</b>
+                        <b>Spesifikasi:</b>
                         <div id="modal-souvenir-specs">spesifikasi produk</div>
                     </div>
                     
@@ -164,7 +158,6 @@
             });
         }
 
-        // Set WhatsApp URL untuk menanyakan detail produk
         const message = `Halo Travelink Wisata, saya ingin menanyakan detail lebih lanjut mengenai produk ${item.title}.`;
         const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;
         document.getElementById('modal-souvenir-wa-btn').href = waUrl;

@@ -12,6 +12,21 @@ class PortfolioSeeder extends Seeder
      */
     public function run(): void
     {
+        /*
+        'category_id',
+        'title',
+        'yt_vid_id',
+        'thumbnail_url',
+        'location',
+        'pax',
+        'duration',
+        'summary',
+        'is_featured',
+        */
+        $portfolioItem = [
+
+        ];
+
         portfolio::factory()->count(6)->create();
     }
 }

@@ -16,7 +16,6 @@ class souvenirCatalog extends Model
         'moq',
         'description',
         'specification',
-        'is_featured',
     ];
 
     public function category()

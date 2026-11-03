@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('moq')->default(1);
             $table->text('description');
             $table->text('specification');
-            $table->string('is_featured')->default(false);
 
             $table->timestamps();
         });
