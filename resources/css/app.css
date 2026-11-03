@@ -329,7 +329,7 @@ a {
     max-width: 1216px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 28px;
 }
 
@@ -871,10 +871,6 @@ a {
     font-weight: 700;
     color: var(--jet);
     margin-top: 15px;
-}
-
-.spec-grid span:last-child {
-    grid-column: 1 / -1;
 }
 
 .spec-grid small {

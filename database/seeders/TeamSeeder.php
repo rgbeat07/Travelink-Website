@@ -13,10 +13,12 @@ class TeamSeeder extends Seeder
     public function run(): void
     {
         $members = [
-            ['name' => 'Umi Kalsum', 'job' => 'CEO of Travelink Wisata'],
-            ['name' => 'Syfak Gartina', 'job' => 'CEO of Travelink Wisata'],
-            ['name' => 'Aga Firmansyah', 'job' => 'CEO of Travelink Wisata'],
-            ['name' => 'Muhammad Rafi Athaillah Rayhansyah', 'job' => 'CEO of Travelink Wisata'],
+            ['name' => 'Umi Kalsum', 'job' => 'Chief Executive Officer (CEO)'],
+            ['name' => 'Syfak Gartina', 'job' => 'Chief People Officer (CPO)'],
+            ['name' => 'Aga Firmansyah', 'job' => 'Chief Financial Officer (CFO)'],
+            ['name' => 'Muhammad Rafi Athaillah Rayhansyah', 'job' => 'Chief Technology Officer (CTO)'],
+            ['name' => 'Alvinda Pratama', 'job' => 'Chief Operating Officer (COO)'],
+            ['name' => 'Laudya Aquilla Putry Ayu', 'job' => 'Chief Marketing Officer (CMO)']
         ];
 
         foreach ($members as $index => $member) {

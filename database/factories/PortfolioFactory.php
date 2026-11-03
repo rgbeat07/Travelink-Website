@@ -27,7 +27,7 @@ class PortfolioFactory extends Factory
             'pax' => fake()->numberBetween(20, 150),
             'duration' => fake()->numberBetween(2, 4).' Hari '.fake()->numberBetween(1, 3).' Malam',
             'summary' => fake()->paragraph(3),
-            'is_featured' => fake()->boolean(30),
+            'is_featured' => true,
         ];
     }
 }
