@@ -13,20 +13,16 @@ class TeamSeeder extends Seeder
     public function run(): void
     {
         $members = [
-            ['name' => 'Umi Kalsum', 'job' => 'Chief Executive Officer (CEO)'],
-            ['name' => 'Syfak Gartina', 'job' => 'Chief People Officer (CPO)'],
-            ['name' => 'Aga Firmansyah', 'job' => 'Chief Financial Officer (CFO)'],
-            ['name' => 'Muhammad Rafi Athaillah Rayhansyah', 'job' => 'Chief Technology Officer (CTO)'],
-            ['name' => 'Alvinda Pratama', 'job' => 'Chief Operating Officer (COO)'],
-            ['name' => 'Laudya Aquilla Putry Ayu', 'job' => 'Chief Marketing Officer (CMO)']
+            ['name' => 'Umi Kalsum', 'job' => 'Chief Executive Officer (CEO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/1XyOiPie9wxBpQhENSHWgeaGI7qfiL627'],
+            ['name' => 'Syfak Gartina', 'job' => 'Chief People Officer (CPO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/1rIt0QwJoXE6YL-stCGJrBNb_wYwNJvW3'],
+            ['name' => 'Aga Firmansyah', 'job' => 'Chief Financial Officer (CFO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/143kNzH9P0XwLTekbN_gn3NJu7O4mw1RB'],
+            ['name' => 'Muhammad Rafi Athaillah Rayhansyah', 'job' => 'Chief Technology Officer (CTO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/1ICqLJmIp3y_axB8D1Jg8xnFUxXH4MbSO'],
+            ['name' => 'Alvinda Pratama', 'job' => 'Chief Operating Officer (COO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/10--Z6kKE7RF0SvrawSF8CcF9GcrJc5jb'],
+            ['name' => 'Laudya Aquilla Putry Ayu', 'job' => 'Chief Marketing Officer (CMO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/1ubiIbh56z-QsLrNSReIOSXXwa0kw2IxR']
         ];
 
         foreach ($members as $index => $member) {
-            Team::create([
-                'name' => $member['name'],
-                'job' => $member['job'],
-                'photo_url' => 'https://picsum.photos/400/500?random='.($index + 1),
-            ]);
+            Team::create($member);
         }
     }
 }
