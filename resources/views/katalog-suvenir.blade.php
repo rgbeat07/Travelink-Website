@@ -15,8 +15,8 @@
 
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Semua Produk</button>
-                <button class="filter-btn" data-filter="tumbler">Tumbler</button>
-                <button class="filter-btn" data-filter="plakat">Plakat</button>
+                <button class="filter-btn" data-filter="gift">Gift</button>
+                <button class="filter-btn" data-filter="tas">Tas</button>
             </div>
 
             <div class="catalog-grid" id="souvenir-grid">
@@ -27,7 +27,7 @@
 
                         $specsList = [];
                         if (!empty($item->specification)) {
-                            $lines = explode("\n", str_replace(["\r", "•", "-", ","], "", $item->specification));
+                            $lines = explode("\n", str_replace(["\r", "•", "-"], "", $item->specification));
                             foreach ($lines as $line) {
                                 $trimmed = trim($line);
                                 if ($trimmed !== '') {
