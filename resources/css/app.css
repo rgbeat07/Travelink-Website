@@ -868,7 +868,6 @@ a {
     cursor: pointer;
     display: grid;
     place-items: center;
-    line-height: 1
 }
 
 .modal-image {
