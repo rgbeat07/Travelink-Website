@@ -21,14 +21,14 @@
                 <button class="filter-btn" data-filter="travel">Travel Accessories</button>
                 @foreach($categories as $cat)
                     @php $catSlug = Str::slug($cat->category_name); @endphp
-                    @if(!in-array($catSlug, ['executive', 'apparel', 'travel']))
+                    @if(!array($catSlug, ['executive', 'apparel', 'travel']))
                         <button class="filter-btn" data-filter="{{ $catSlug }}">{{ $cat->category_name }}</button>
                     @endif
                 @endforeach
             </div>
 
             <div class="catalog-grid" id="souvenir-grid">
-                @forelse($souvenirs as $index => $item)
+                @foreach($souvenirs as $index => $item)
                     @php
                         $catName = $item->category->category_name ?? 'Executive Kit';
                         $catLower = strtolower($catName);
@@ -80,38 +80,7 @@
                             ▣ &nbsp; Lihat Detail &amp; Pesan
                         </button>
                     </article>
-                @empty
-                    @php
-                        $fallbackGifts = [
-                            ['id' => 1, 'title' => 'Map Dokumen Kulit Premium', 'category' => 'executive', 'label' => 'Executive Kit', 'moq' => 10, 'image' => 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=85', 'description' => 'Map dokumen eksklusif berbahan kulit sintetis Italia kualitas tinggi dengan jahitan presisi, slot pen, dan penyimpan kartu.', 'specs' => ['Premium Synthetic Italian Leather', 'Emboss foil gold / silver logo', 'Ukuran A4 / F4', 'Hardbox elegan + kartu ucapan']],
-                            ['id' => 2, 'title' => 'Executive Tumbler Stainless Gold', 'category' => 'travel', 'label' => 'Travel Accessories', 'moq' => 24, 'image' => 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1000&q=85', 'description' => 'Tumbler termo tahan panas dan dingin hingga 12 jam dengan lapisan matte premium.', 'specs' => ['Stainless Steel 316 Food Grade', 'Kapasitas 500 ml', 'Laser engraving logo', 'Smart LED temperature display']],
-                            ['id' => 3, 'title' => 'Jaket Windbreaker Custom Logo', 'category' => 'apparel', 'label' => 'Apparel & Merch', 'moq' => 20, 'image' => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=85', 'description' => 'Jaket pelindung angin dan hujan ringan bertema sporty-chic untuk kegiatan outdoor.', 'specs' => ['Waterproof Taslan + furing mesh', 'Bordir komputer high density', 'Ukuran S–XXL', 'Navy dengan aksen gold']],
-                            ['id' => 4, 'title' => 'Leather Passport Holder & Tag', 'category' => 'executive', 'label' => 'Executive Kit', 'moq' => 15, 'image' => 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1000&q=85', 'description' => 'Set sampul paspor dan gantungan koper kulit sintetis matching warna Navy-Gold.', 'specs' => ['Leatherette premium', 'Passport cover + luggage tag', 'Gold debossing logo', 'Magnet closure']],
-                            ['id' => 5, 'title' => 'Premium Travel Duffel Bag', 'category' => 'travel', 'label' => 'Travel Accessories', 'moq' => 15, 'image' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85', 'description' => 'Tas duffel kabin bergaya klasik dengan kompartemen luas dan slot khusus sepatu.', 'specs' => ['Heavy canvas + leather accent', 'Kapasitas 35 liter', 'Metal emblem / emboss tag', 'Waterproof lining']],
-                            ['id' => 6, 'title' => 'Metal Ballpoint Pen Gold Emboss', 'category' => 'executive', 'label' => 'Executive Kit', 'moq' => 50, 'image' => 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=1000&q=85', 'description' => 'Pulpen metal berbobot mantap dengan mekanisme putar dan tinta gel hitam mulus.', 'specs' => ['Full metal stainless body', 'Midnight navy / champagne gold', 'Laser engraved logo', 'Velvet pouch / hard box']],
-                        ];
-                    @endphp
-                    @foreach($fallbackGifts as $item)
-                        @php
-                            $filterTags = $item['category'];
-                            $itemJson = json_encode($item);
-                        @endphp
-                        <article class="catalog-card" data-filter-tags="{{ $filterTags }}">
-                            <div class="card-image">
-                                <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}">
-                                <span>MOQ: {{ $item['moq'] }} Pcs</span>
-                            </div>
-                            <div class="card-copy">
-                                <small class="muted">{{ $item['label'] }}</small>
-                                <h3>{{ $item['title'] }}</h3>
-                                <p>{{ $item['description'] }}</p>
-                            </div>
-                            <button class="card-btn solid" onclick='openSouvenirModal({{ $itemJson }})'>
-                                ▣ &nbsp; Lihat Detail &amp; Pesan
-                            </button>
-                        </article>
-                    @endforeach
-                @endforelse
+                @endforeach
             </div>
         </main>
     </div>

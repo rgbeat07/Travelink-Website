@@ -30,13 +30,13 @@ class PageController extends Controller
         return view('home', compact('hero', 'contact', 'teams', 'featuredPortfolios'));
     }
 
-    public function portofolio(): View
+    public function portfolio(): View
     {
         $portfolios = portfolio::with('category')->get();
         $categories = Category::where('type', 'portfolio')->get();
         $contact = Contact::first();
 
-        return view('portofolio', compact('portfolios', 'categories', 'contact'));
+        return view('portfolio', compact('portfolios', 'categories', 'contact'));
     }
 
     public function katalogSuvenir(): View
