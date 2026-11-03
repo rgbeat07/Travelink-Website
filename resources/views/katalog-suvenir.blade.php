@@ -22,7 +22,7 @@
             <div class="catalog-grid" id="souvenir-grid">
                 @foreach($souvenirs as $index => $item)
                     @php
-                        $catName = $item->category->category_name;
+                        $catName = $item->category;
                         $filterTags = Str::slug($catName);
 
                         $specsList = [];
@@ -109,7 +109,6 @@
     const waPhone = '{{ ltrim($contact->phone_num) }}';
     let currentSouvenirItem = null;
 
-    // Filter functionality
     document.querySelectorAll('.filters .filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.filters .filter-btn').forEach(b => b.classList.remove('active'));
@@ -133,7 +132,6 @@
         });
     });
 
-    // Modal functionality
     function openSouvenirModal(item) {
         currentSouvenirItem = item;
 
@@ -143,11 +141,9 @@
         document.getElementById('modal-souvenir-title').innerText = item.title;
         document.getElementById('modal-souvenir-desc').innerText = item.description;
         
-        // Render MOQ
         const moqValue = item.moq || 10;
         document.getElementById('modal-souvenir-moq').innerText = moqValue + ' Pcs';
 
-        // Render specs
         const specsContainer = document.getElementById('modal-souvenir-specs');
         specsContainer.innerHTML = '';
         if (item.specs && Array.isArray(item.specs)) {

@@ -5,21 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class souvenirCatalog extends Model
+class SouvenirCatalog extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'category_id',
+        'category',
         'title',
         'main_photo_url',
         'moq',
         'description',
         'specification',
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
-    }
 }

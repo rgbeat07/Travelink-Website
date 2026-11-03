@@ -1,47 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
 @import 'tailwindcss';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/.blade.php';
-@source '../../storage/framework/views/.php';
-@source '../views//*.blade.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
 
-
-:root {
-    --jet: #121212;
-    --gold: #cfa653;
-    --pearl: #f9f9f9;
-    --charcoal: #2b2b2b;
-    --navy: #0f2041;
-    --catgold: #c5a365;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    background: var(--pearl);
-    color: var(--charcoal);
-    font-family: Inter, sans-serif;
-}
-
-button,
-a {
-    font: inherit;
-}
-
-.fg-inline-italic {
-    font-style: italic;
-}
-
-.fg-inline-bold {
-    font-weight: 700;
-}
-
-/* ==========================================================================
-2. BUTTONS & SHARED UI
-========================================================================== */
 .gold-btn {
     display: inline-block;
     border: 0;
@@ -85,7 +46,6 @@ a {
 
 /* ==========================================================================
 3. NAVIGATION (HEADER)
-========================================================================== */
 .home-nav {
     height: 80px;
     background: var(--jet);
@@ -148,7 +108,6 @@ a {
 
 /* ==========================================================================
 4. HERO SECTION
-========================================================================== */
 .hero {
     height: calc(90vh + 80px);
     min-height: 720px;
@@ -204,7 +163,6 @@ a {
 
 /* ==========================================================================
 5. HOMEPAGE SECTIONS
-========================================================================== */
 .section {
     padding: 96px 32px;
 }
@@ -470,7 +428,6 @@ a {
 
 /* ==========================================================================
 6. FOOTER
-========================================================================== */
 .home-footer {
     background: var(--jet);
     color: #9ca3af;
@@ -534,7 +491,6 @@ a {
 
 /* ==========================================================================
 7. CATALOG & PORTOFOLIO APP
-========================================================================== */
 .catalog-app {
     min-height: 100vh;
     background: var(--pearl);
@@ -743,7 +699,6 @@ a {
 
 /* ==========================================================================
 8. MODALS
-========================================================================== */
 .modal-backdrop {
     position: fixed;
     z-index: 80;
@@ -884,68 +839,7 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-}
-
-.product-modal-grid .modal-image {
-    height: 420px;
-}
-
-.spec-list {
-    background: var(--pearl);
-    border: 1px solid #cfa65355;
-    padding: 15px;
-    margin: 15px 0;
-    color: var(--jet);
-    border-radius: 5px;
-}
-
-.spec-list b {
-    font-size: 10px;
-    text-transform: uppercase;
-    color: var(--navy);
-    display: block;
-    margin-bottom: 6px;
-}
-
-.spec-list p {
-    font-size: 10px;
-    margin: 8px 0;
-    color: #666;
-}
-
-.moq-info {
-    margin: 15px 0 5px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--navy);
-}
-
-.order-btn {
-    display: block;
-    text-align: center;
-    background: var(--gold);
-    color: var(--jet);
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    padding: 15px;
-    margin-top: 17px;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-}
-
-.order-btn:hover {
-    background: var(--jet);
-    color: var(--gold);
-}
-
-/* ==========================================================================
-9. MEDIA QUERIES
-========================================================================== */
-@media (max-width: 900px) {
-    body {
-        min-width: 1000px;
-    }
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
 }
