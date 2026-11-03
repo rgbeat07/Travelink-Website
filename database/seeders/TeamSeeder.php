@@ -21,7 +21,7 @@ class TeamSeeder extends Seeder
             ['name' => 'Laudya Aquilla Putry Ayu', 'job' => 'Chief Marketing Officer (CMO)', 'photo_url' => 'https://lh3.googleusercontent.com/d/1ubiIbh56z-QsLrNSReIOSXXwa0kw2IxR']
         ];
 
-        foreach ($members as $index => $member) {
+        foreach ($members as $member) {
             Team::create($member);
         }
     }
