@@ -834,7 +834,7 @@ a {
     text-transform: uppercase;
     font-size: 8px;
     font-weight: 700;
-    border-radius: 99px;
+    border-radius: 5px;
 }
 
 .modal-content h2 {
@@ -897,6 +897,7 @@ a {
     padding: 15px;
     margin: 15px 0;
     color: var(--jet);
+    border-radius: 5px;
 }
 
 .spec-list b {
