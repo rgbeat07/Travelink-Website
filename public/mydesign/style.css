@@ -774,6 +774,16 @@ a {
     display: block;
 }
 
+.modal-image.reel {
+    height: 70vh;
+    background: #fff;
+}
+
+.modal-image.reel iframe {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
 .modal-image>span {
     position: absolute;
     inset: 0;

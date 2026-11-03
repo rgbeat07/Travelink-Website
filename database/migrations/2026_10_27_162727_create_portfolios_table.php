@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('category');
             $table->string('title');
-            $table->string('yt_vid_id');
+            $table->string('video_url');
             $table->text('thumbnail_url');
             $table->string('location');
             $table->integer('pax');

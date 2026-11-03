@@ -26,6 +26,21 @@
                         $filterTags = $regionSlug;
                         $label = $item->category;
                         $paxText = is_numeric($item->pax) ? $item->pax . ' Pax' : $item->pax;
+
+                        $videoUrl = $item->video_url;
+                        $videoPath = rtrim(Str::before($videoUrl, '?'), '/');
+                        $videoId = Str::afterLast($videoPath, '/');
+                        $isReel = str_contains($videoUrl, 'instagram.com');
+
+                        if ($isReel) {
+                            $videoEmbedUrl = 'https://www.instagram.com/reel/' . $videoId . '/embed';
+                        } else {
+                            if (str_contains($videoUrl, 'v=')) {
+                                $videoId = Str::before(Str::after($videoUrl, 'v='), '&');
+                            }
+                            $videoEmbedUrl = 'https://www.youtube-nocookie.com/embed/' . $videoId . '?autoplay=1';
+                        }
+
                         $itemJson = json_encode([
                             'id' => $item->id,
                             'title' => $item->title,
@@ -35,7 +50,8 @@
                             'duration' => $item->duration,
                             'description' => $item->summary,
                             'image' => $item->thumbnail_url,
-                            'yt_vid_id' => $item->yt_vid_id,
+                            'video_embed_url' => $videoEmbedUrl,
+                            'is_reel' => $isReel,
                             'hotel' => $item->hotel,
                         ]);
                     @endphp
@@ -91,7 +107,8 @@
 
 @push('scripts')
 <script>
-    let currentYtId = '';
+    let currentVideoEmbedUrl = '';
+    let currentIsReel = false;
     let currentImgUrl = '';
     let currentTitle = '';
 
@@ -119,7 +136,8 @@
     });
 
     function openPortfolioModal(item) {
-        currentYtId = item.yt_vid_id;
+        currentVideoEmbedUrl = item.video_embed_url;
+        currentIsReel = item.is_reel;
         currentImgUrl = item.image || item.thumbnail_url;
         currentTitle = item.title;
 
@@ -131,6 +149,7 @@
         document.getElementById('modal-portfolio-hotel').innerText = item.hotel;
 
         const container = document.getElementById('modal-image-container');
+        container.classList.remove('reel');
         container.innerHTML = `
             <img id="modal-portfolio-img" src="${currentImgUrl}" alt="${currentTitle}">
             <span id="modal-play-btn" onclick="playPortfolioVideo()">▶</span>
@@ -141,10 +160,13 @@
     }
 
     function playPortfolioVideo() {
-        if (!currentYtId) return;
+        if (!currentVideoEmbedUrl) return;
         const container = document.getElementById('modal-image-container');
+        if (currentIsReel) {
+            container.classList.add('reel');
+        }
         container.innerHTML = `
-            <iframe src="https://www.youtube-nocookie.com/embed/${currentYtId}?autoplay=1"
+            <iframe src="${currentVideoEmbedUrl}"
                     title="${currentTitle}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>

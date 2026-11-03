@@ -20,7 +20,7 @@ class PortfolioFactory extends Factory
         return [
             'category' => fake()->randomElement(['Domestik', 'Internasional']),
             'title' => 'Gathering & Outing '.fake()->company(),
-            'yt_vid_id' => fake()->randomElement(['dQw4w9WgXcQ', 'LXb3EKWsInQ']),
+            'video_url' => fake()->randomElement(['https://www.youtube.com/watch?v=LXb3EKWsInQ', 'https://www.instagram.com/reel/DSsEOCBk6a4/']),
             'thumbnail_url' => 'https://picsum.photos/800/600?random='.rand(1, 100),
             'location' => fake()->city().', Indonesia',
             'pax' => fake()->numberBetween(20, 150),

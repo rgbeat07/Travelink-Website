@@ -12,7 +12,7 @@ class Portfolio extends Model
     protected $fillable = [
         'category',
         'title',
-        'yt_vid_id',
+        'video_url',
         'thumbnail_url',
         'location',
         'pax',
