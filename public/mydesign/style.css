@@ -495,6 +495,16 @@ a {
     font-size: 19px;
 }
 
+.social a {
+    color: inherit;
+    display: inline-flex;
+    transition: color 0.2s ease;
+}
+
+.social a:hover {
+    color: #fff;
+}
+
 .copyright {
     max-width: 1216px;
     margin: 55px auto 0;
@@ -914,8 +924,157 @@ a {
     color: var(--gold);
 }
 
-@media (max-width: 900px) {
-    body {
-        min-width: 1000px;
+@media (max-width: 1024px) {
+    .home-links {
+        gap: 22px;
+    }
+
+    .section {
+        padding: 72px 24px;
+    }
+
+    .two-col {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .team-grid,
+    .teaser-grid,
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gift-banner {
+        padding: 80px 24px;
+    }
+
+    .gift-banner h2 {
+        font-size: 36px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-about {
+        grid-column: 1 / -1;
+    }
+
+    .catalog-main {
+        padding: 128px 24px 64px;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-nav {
+        height: 104px;
+    }
+
+    .home-nav>div {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 16px;
+    }
+
+    .wordmark {
+        font-size: 17px;
+    }
+
+    .home-links {
+        gap: 8px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .home-links a {
+        font-size: 10px;
+        letter-spacing: .08em;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 640px;
+        padding-top: 104px;
+        background-attachment: scroll;
+    }
+
+    .hero-shade {
+        inset: 104px 0 0;
+    }
+
+    .hero-copy {
+        padding: 40px 16px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 56px 16px;
+    }
+
+    .section h2,
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .team-grid,
+    .teaser-grid,
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gift-banner {
+        padding: 64px 16px;
+    }
+
+    .gift-banner h2 {
+        font-size: 28px;
+    }
+
+    .home-footer {
+        padding: 48px 16px 24px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .catalog-main {
+        padding: 140px 16px 56px;
+    }
+
+    .catalog-intro h1 {
+        font-size: 30px;
+    }
+
+    .modal-backdrop {
+        padding: 12px;
+    }
+
+    .modal {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .modal-image {
+        height: 220px;
+    }
+
+    .product-modal-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .product-modal-grid .modal-image {
+        height: 280px;
     }
 }
